@@ -1,6 +1,7 @@
 package org.example.rest.controller;
 
 
+import jakarta.validation.Valid;
 import org.example.domain.entity.Produto;
 import org.example.domain.repository.Produtos;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,7 +30,7 @@ public class ProductController {
 
     @PostMapping
     @ResponseStatus(CREATED)
-    public Produto save(@RequestBody Produto produto) {
+    public Produto save(@RequestBody @Valid Produto produto) {
         return produtos.save(produto);
     }
 
@@ -48,7 +49,7 @@ public class ProductController {
     @PutMapping("{id}")
     @ResponseStatus(NO_CONTENT)
     public void update(@PathVariable Integer id,
-                       @RequestBody Produto produto){
+                       @RequestBody @Valid Produto produto){
 
         produtos.findById(id)
                 .map(produtoExistente -> {
