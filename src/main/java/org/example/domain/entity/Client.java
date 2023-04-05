@@ -6,7 +6,6 @@ import jakarta.validation.constraints.NotEmpty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.IdGeneratorType;
 import org.hibernate.validator.constraints.br.CPF;
 
 import java.util.Set;
@@ -20,11 +19,11 @@ public class Client {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
-    @NotEmpty(message = "Campo nome é obrigatório. ")
+    @NotEmpty(message = "{campo.nome.obrigatorio}")
     private String nome;
 
-    @NotEmpty(message = "Campo CPF é obrigatório.")
-    @CPF(message = "Informe um CPF válido.")
+    @NotEmpty(message = "{campo.cpf.obrigatorio}")
+    @CPF(message = "{campo.cpf.invalid}")
     private String cpf;
 
 
