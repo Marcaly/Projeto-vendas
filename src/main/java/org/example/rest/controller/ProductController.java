@@ -1,7 +1,6 @@
 package org.example.rest.controller;
 
 
-import jakarta.validation.Valid;
 import org.example.domain.entity.Produto;
 import org.example.domain.repository.Produtos;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +9,7 @@ import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
+import javax.validation.Valid;
 import java.util.List;
 
 import static org.springframework.http.HttpStatus.*;

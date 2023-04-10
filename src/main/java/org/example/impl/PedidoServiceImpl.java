@@ -1,6 +1,5 @@
 package org.example.impl;
 
-import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.example.domain.entity.Client;
 import org.example.domain.entity.ItemPedido;
@@ -18,6 +17,7 @@ import org.example.rest.dto.PedidoDTO;
 import org.example.service.PedidoService;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;

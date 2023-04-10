@@ -1,6 +1,5 @@
 package org.example.rest.controller;
 
-import jakarta.validation.Valid;
 import org.example.domain.entity.ItemPedido;
 import org.example.domain.entity.Pedido;
 import org.example.domain.enums.StatusPedido;
@@ -14,6 +13,7 @@ import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
+import javax.validation.Valid;
 import java.time.format.DateTimeFormatter;
 import java.util.Collections;
 import java.util.List;

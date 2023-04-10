@@ -1,8 +1,8 @@
 package org.example.domain.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import jakarta.persistence.*;
-import jakarta.validation.constraints.NotEmpty;
+import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -16,12 +16,13 @@ import java.util.Set;
 @Table
 public class Client {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @NotEmpty(message = "{campo.nome.obrigatorio}")
     private String nome;
 
+    @Column(name = "cpf", length = 11)
     @NotEmpty(message = "{campo.cpf.obrigatorio}")
     @CPF(message = "{campo.cpf.invalid}")
     private String cpf;
