@@ -1,6 +1,7 @@
 package org.example.rest.controller;
 
 
+import io.swagger.annotations.*;
 import org.example.domain.entity.Produto;
 import org.example.domain.repository.Produtos;
 import org.springframework.beans.factory.annotation.Autowired;

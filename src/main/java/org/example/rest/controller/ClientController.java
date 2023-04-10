@@ -1,6 +1,8 @@
 package org.example.rest.controller;
 
 import javax.validation.Valid;
+
+import io.swagger.annotations.*;
 import org.example.domain.entity.Client;
 import org.example.domain.repository.Clients;
 import org.springframework.data.domain.Example;
@@ -14,6 +16,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/clients")
+@Api("Api clients")
 public class ClientController {
 
 
@@ -24,7 +27,13 @@ public class ClientController {
     }
 
     @GetMapping("{id}")
-    public Client getClientById(@PathVariable Integer id) {
+    @ApiOperation("Obter detalhes de um cliente")
+    @ApiResponses({
+            @ApiResponse(code = 200, message = "Cliente encontrado"),
+            @ApiResponse(code = 404, message = "Cliente não encontrado para o ID informado")
+    })
+    public Client getClientById(@PathVariable
+                                @ApiParam("ID do cliente") Integer id) {
         return clients
                 .findById(id)
                 .orElseThrow(() ->
@@ -34,15 +43,25 @@ public class ClientController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
+    @ApiOperation("Salva um novo cliente")
+    @ApiResponses({
+            @ApiResponse(code = 201, message = "Cliente salvo com sucesso"),
+            @ApiResponse(code = 400, message = "Erro de validação")
+    })
     public Client save(@RequestBody @Valid Client client) {
         return clients.save(client);
     }
 
     @DeleteMapping("{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void delete(@PathVariable Integer id) {
+    @ApiOperation("Deletar cliente")
+    @ApiResponses({
+            @ApiResponse(code = 200, message = "Cliente deletado"),
+            @ApiResponse(code = 404, message = "ID não encontrado")
+    })
+    public void delete(@PathVariable @ApiParam("ID do cliente") Integer id) {
         clients.findById(id)
-                .map( client -> {
+                .map(client -> {
                     clients.delete(client);
                     return client;
                 })
@@ -70,7 +89,7 @@ public class ClientController {
                 .withStringMatcher(
                         ExampleMatcher.StringMatcher.CONTAINING);
         Example example = Example.of(filtro, matcher);
-       return clients.findAll(example);
+        return clients.findAll(example);
     }
 
 }

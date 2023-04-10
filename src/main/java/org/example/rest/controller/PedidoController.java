@@ -1,5 +1,6 @@
 package org.example.rest.controller;
 
+import io.swagger.annotations.*;
 import org.example.domain.entity.ItemPedido;
 import org.example.domain.entity.Pedido;
 import org.example.domain.enums.StatusPedido;
@@ -9,6 +10,7 @@ import org.example.rest.dto.InformacoesPedidoDTO;
 import org.example.rest.dto.PedidoDTO;
 import org.example.service.PedidoService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
